@@ -114,12 +114,12 @@ public class Book implements Serializable{
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id 
-                + ", name=" + name 
-                + ", author=" + author 
-                + ", isbn=" + isbn 
-                + ", publishedYear=" + publishedYear 
-                + '}';
+        return "\nID Книги: " + id 
+                + "\n, Название: " + name 
+                + "\n, Автор: " + author 
+                + "\n, Номер ISBN: " + isbn 
+                + "\n, Год издания: " + publishedYear 
+                + '\n';
     }
     
     
