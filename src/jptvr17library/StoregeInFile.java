@@ -6,6 +6,7 @@
 package jptvr17library;
 
 import entity.Book;
+import entity.Reader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,7 +44,7 @@ public class StoregeInFile {
        
     }
 
-    List<Book> loadFromFile() {
+    List<Book> loadBookFromFile() {
             List<Book> books = new ArrayList<>();
             FileInputStream fis = null;
             ObjectInputStream oin = null;
@@ -62,6 +63,45 @@ public class StoregeInFile {
                 .log(Level.SEVERE, "Нет такого класса", ex);
         }
         return books;
+    }
+
+    List<Reader> loadReaderFromFile() {
+             List<Reader> readers = new ArrayList<>();
+            FileInputStream fis = null;
+            ObjectInputStream oin = null;
+         try {   
+            fis = new FileInputStream("Readers.txt");
+            oin = new ObjectInputStream(fis);
+            readers = (List<Reader>) oin.readObject();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StoregeInFile.class.getName())
+                .log(Level.SEVERE, "Нет такого файла", ex);
+        } catch (IOException ex) {
+            Logger.getLogger(StoregeInFile.class.getName())
+                .log(Level.SEVERE, "Не могу читать из файла", ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(StoregeInFile.class.getName())
+                .log(Level.SEVERE, "Нет такого класса", ex);
+        }
+        return readers;
+    }
+
+    void saveReaders(List<Reader> listReaders) {
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream("Readers.txt");
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(listReaders);
+            oos.flush();
+            oos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StoregeInFile.class.getName())
+               .log(Level.SEVERE, "Нет такого файла", ex);
+        } catch (IOException ex) {
+            Logger.getLogger(StoregeInFile.class.getName())
+               .log(Level.SEVERE, "Не могу записать", ex);
+        }
     }
     
 }

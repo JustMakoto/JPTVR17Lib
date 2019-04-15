@@ -5,7 +5,9 @@
  */
 package jptvr17library;
 
+import providers.ReaderProviders;
 import entity.Book;
+import entity.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,10 +19,23 @@ import providers.BookProvider;
  */
 public class App {
     private List<Book> listBooks = new ArrayList<>();
+    private List<Reader> listReaders = new ArrayList<Reader>();
     private StoregeInFile storegeInFile;
     public App() {
+        
        storegeInFile = new StoregeInFile();
-       listBooks = storegeInFile.loadFromFile();
+       
+       try{
+           listBooks = storegeInFile.loadBookFromFile();
+       }catch(Exception e){
+           System.out.println("Нет файла Books.txt");
+       }
+       
+       try{
+           listReaders = storegeInFile.loadReaderFromFile();
+       }catch(Exception e){
+           System.out.println("Нет файла Reader.txt");
+       }
     }
     
     public void run() {
@@ -50,8 +65,19 @@ public class App {
                     }
                     break;
                 case 2:
+                    ReaderProviders readerProvider = new ReaderProviders();
                     
-                    break;
+                    System.out.println(
+                            "Создан читатель: "
+                            + readerProvider.toString()
+                    );
+                    listReaders.add(readerProvider.createReader());
+                    storegeInFile.saveReaders(listReaders);
+                    for (int i=0; i < listReaders.size(); i++) {
+                        System.out.println(
+                                "Создан читатель: " + listReaders.get(i).getName());
+            };
+            break;
                 case 3:
                     
                     break;
