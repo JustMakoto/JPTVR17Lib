@@ -12,16 +12,16 @@ import java.util.Objects;
  *
  * @author Melnikov
  */
-public class Reader implements Serializable{
+public class Customer implements Serializable{
     private Long id;
     private String name;
     private String surname;
     private String phone;
 
-    public Reader() {
+    public Customer() {
     }
 
-    public Reader(Long id, String name, String surname, String phone) {
+    public Customer(Long id, String name, String surname, String phone) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -81,7 +81,7 @@ public class Reader implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Reader other = (Reader) obj;
+        final Customer other = (Customer) obj;
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
@@ -99,11 +99,10 @@ public class Reader implements Serializable{
 
     @Override
     public String toString() {
-        return "Reader{" + "id=" + id
-                + ", name=" + name
-                + ", surname=" + surname 
-                + ", phone=" + phone 
-                + '}';
+        return "\nid=" + id
+                + "\n name=" + name
+                + "\n surname=" + surname 
+                + "\n phone=" + phone + "\n";
     }
     
     

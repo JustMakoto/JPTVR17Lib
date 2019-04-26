@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jptvr17library;
+package jptvr17shop;
 
-import entity.Book;
+import entity.Product;
 import entity.History;
-import entity.Reader;
+import entity.Customer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -25,14 +25,14 @@ import java.util.logging.Logger;
  */
 public class StoregeInFile {
 
-    void saveBooks(List<Book> listBooks) {
+    void saveProducts(List<Product> listProducts) {
         
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = new FileOutputStream("Books.txt");
+            fos = new FileOutputStream("Product.txt");
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(listBooks);
+            oos.writeObject(listProducts);
             oos.flush();
             oos.close();
         } catch (FileNotFoundException ex) {
@@ -45,14 +45,14 @@ public class StoregeInFile {
        
     }
 
-    List<Book> loadBookFromFile() {
-            List<Book> books = new ArrayList<>();
+    List<Product> loadProductFromFile() {
+            List<Product> products = new ArrayList<>();
             FileInputStream fis = null;
             ObjectInputStream oin = null;
          try {   
-            fis = new FileInputStream("Books.txt");
+            fis = new FileInputStream("Product.txt");
             oin = new ObjectInputStream(fis);
-            books = (List<Book>) oin.readObject();
+            products = (List<Product>) oin.readObject();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(StoregeInFile.class.getName())
                 .log(Level.SEVERE, "Нет такого файла", ex);
@@ -63,17 +63,17 @@ public class StoregeInFile {
             Logger.getLogger(StoregeInFile.class.getName())
                 .log(Level.SEVERE, "Нет такого класса", ex);
         }
-        return books;
+        return products;
     }
 
-    List<Reader> loadReaderFromFile() {
-             List<Reader> readers = new ArrayList<>();
+    List<Customer> loadCustomerFromFile() {
+             List<Customer> customers = new ArrayList<>();
             FileInputStream fis = null;
             ObjectInputStream oin = null;
          try {   
-            fis = new FileInputStream("Readers.txt");
+            fis = new FileInputStream("Customer.txt");
             oin = new ObjectInputStream(fis);
-            readers = (List<Reader>) oin.readObject();
+            customers = (List<Customer>) oin.readObject();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(StoregeInFile.class.getName())
                 .log(Level.SEVERE, "Нет такого файла", ex);
@@ -84,16 +84,16 @@ public class StoregeInFile {
             Logger.getLogger(StoregeInFile.class.getName())
                 .log(Level.SEVERE, "Нет такого класса", ex);
         }
-        return readers;
+        return customers;
     }
 
-    void saveReaders(List<Reader> listReaders) {
+    void saveCustomers(List<Customer> listCustomers) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = new FileOutputStream("Readers.txt");
+            fos = new FileOutputStream("Customer.txt");
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(listReaders);
+            oos.writeObject(listCustomers);
             oos.flush();
             oos.close();
         } catch (FileNotFoundException ex) {
@@ -107,13 +107,13 @@ public class StoregeInFile {
     
     
         List<History> loadHistoriesFromFile() {
-             List<History> readers = new ArrayList<>();
+             List<History> customers = new ArrayList<>();
             FileInputStream fis = null;
             ObjectInputStream oin = null;
          try {   
             fis = new FileInputStream("Histories.txt");
             oin = new ObjectInputStream(fis);
-            readers = (List<History>) oin.readObject();
+            customers = (List<History>) oin.readObject();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(StoregeInFile.class.getName())
                 .log(Level.SEVERE, "Нет такого файла", ex);
@@ -124,7 +124,7 @@ public class StoregeInFile {
             Logger.getLogger(StoregeInFile.class.getName())
                 .log(Level.SEVERE, "Нет такого класса", ex);
         }
-        return readers;
+        return customers;
     }
 
     void saveHistory(List<History> listHistories) {

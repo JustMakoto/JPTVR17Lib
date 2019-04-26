@@ -15,15 +15,15 @@ import java.util.Objects;
  */
 public class History implements Serializable{
     private Long id;
-    private Reader reader;
-    private Book book;
+    private Customer reader;
+    private Product book;
     private Date takeBook;
     private Date returnBook;
 
     public History() {
     }
 
-    public History(Long id, Reader reader, Book book, Date takeBook, Date returnBook) {
+    public History(Long id, Customer reader, Product book, Date takeBook, Date returnBook) {
         this.id = id;
         this.reader = reader;
         this.book = book;
@@ -47,19 +47,19 @@ public class History implements Serializable{
         this.id = id;
     }
 
-    public Reader getReader() {
+    public Customer getReader() {
         return reader;
     }
 
-    public void setReader(Reader reader) {
+    public void setCustomer(Customer reader) {
         this.reader = reader;
     }
 
-    public Book getBook() {
+    public Product getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setProduct(Product book) {
         this.book = book;
     }
 

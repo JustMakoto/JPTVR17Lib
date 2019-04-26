@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jptvr17library;
+package jptvr17shop;
 
 /**
  *
  * @author Melnikov
  */
-public class JPTVR17Library {
+public class JPTVR17Shop {
 
     /**
      * @param args the command line arguments
